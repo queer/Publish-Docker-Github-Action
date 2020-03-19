@@ -136,9 +136,9 @@ function isSemver() {
 }
 
 function useSnapshot() {
-  local TIMESTAMP=`date +%Y%m%d%H%M%S`
+  local TIMESTAMP=`date "+%Y-%m-%d_%H.%M.%S"`
   local SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-6)
-  local SNAPSHOT_TAG="${TIMESTAMP}${SHORT_SHA}"
+  local SNAPSHOT_TAG="${TIMESTAMP}-${SHORT_SHA}"
   TAGS="${TAGS} ${SNAPSHOT_TAG}"
   echo ::set-output name=snapshot-tag::"${SNAPSHOT_TAG}"
 }
