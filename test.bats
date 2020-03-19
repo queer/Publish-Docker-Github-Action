@@ -173,13 +173,13 @@ teardown() {
 
   declare -A -p MOCK_RETURNS=(
   ['/usr/local/bin/docker']=""
-  ['/usr/bin/date']="197001010101"
+  ['/usr/bin/date']="1970-01-01_01.01"
   ) > mockReturns
 
   run /entrypoint.sh
 
   expectStdOutContains "
-::set-output name=snapshot-tag::19700101010112169e
+::set-output name=snapshot-tag::1970-01-01_01.01-12169e
 ::set-output name=tag::latest"
 
   expectMockCalled "/usr/bin/date +%Y%m%d%H%M%S
